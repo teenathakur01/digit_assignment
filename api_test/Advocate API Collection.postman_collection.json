@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "8b33102d-07f6-474d-9646-55a2664766f4",
+		"name": "Advocate API Collection",
+		"description": "Postman collection for Advocate APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "34918364"
+	},
+	"item": [
+		{
+			"name": "Create Advocate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"RequestInfo\": {},\n  \"advocates\": [\n    {\n      \"tenantId\": \"pb.amritsar\",\n      \"applicationNumber\": \"APP-123\",\n      \"barRegistrationNumber\": \"BR-001\",\n      \"advocateType\": \"Senior\",\n      \"organisationID\": \"uuid-1234\",\n      \"individualId\": \"indiv-123\",\n      \"isActive\": true\n    }\n  ]\n}"
+				},
+				"url": "{{baseUrl}}/advocate/v1/_create"
+			},
+			"response": []
+		},
+		{
+			"name": "Search Advocate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"RequestInfo\": {},\n  \"criteria\": [\n    {\n      \"tenantId\": \"pb.amritsar\",\n      \"applicationNumber\": \"APP-123\"\n    }\n  ]\n}"
+				},
+				"url": "{{baseUrl}}/advocate/v1/_search"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Advocate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"RequestInfo\": {},\n  \"advocates\": [\n    {\n      \"id\": \"uuid-1234\",\n      \"tenantId\": \"pb.amritsar\",\n      \"applicationNumber\": \"APP-123\",\n      \"barRegistrationNumber\": \"BR-001\",\n      \"advocateType\": \"Senior\",\n      \"organisationID\": \"uuid-1234\",\n      \"individualId\": \"indiv-123\",\n      \"isActive\": false\n    }\n  ]\n}"
+				},
+				"url": "{{baseUrl}}/advocate/v1/_update"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pending Registrations",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"RequestInfo\": {}\n}"
+				},
+				"url": "{{baseUrl}}/advocate/v1/_pendingRegistrations"
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Advocate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"applicationNumber\": \"APP-123\",\n  \"action\": \"APPROVE\",\n  \"rejectionReason\": null,\n  \"RequestInfo\": {}\n}"
+				},
+				"url": "{{baseUrl}}/advocate/v1/_verify"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Clerk",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"RequestInfo\": {},\n  \"advocateClerk\": {\n    \"tenantId\": \"pb.amritsar\",\n    \"advocateId\": \"uuid-advocate\",\n    \"clerkName\": \"John Clerk\"\n  }\n}"
+				},
+				"url": "{{baseUrl}}/advocate/v1/clerk/_create"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080"
+		}
+	]
+}
