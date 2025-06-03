@@ -24,15 +24,10 @@ public class AdvocateClerkService {
      * Creates a new Advocate Clerk and associates it with an Advocate.
      */
     public AdvocateClerk createClerk(AdvocateClerk advocateClerk, RequestInfo requestInfo) {
-        // Additional logic for enriching the clerk data or validation can be added here
         if (advocateClerk.getId() == null) {
             advocateClerk.setId(UUID.randomUUID());
         }
-
-        // Save the clerk in the database (or any other persistent storage)
         advocateClerkRepository.save(advocateClerk);
-
-        // You can call workflow-related methods here to update the workflow state for the clerk if needed.
 
         return advocateClerk;
     }
